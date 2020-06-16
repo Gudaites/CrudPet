@@ -13,7 +13,7 @@ class PetController extends Controller
     public function index(Request $request) {
         $pets = Pet::with(array('Atendimentos'=> function($query){
             $query->orderBy('id', 'DESC');
-        }))->where('nome', 'LIKE', '%'.$request->query('filter').'%')->paginate(10);
+        }))->where('nome', 'LIKE', '%'.$request->query('filter').'%')->paginate(15);
 
         return response()->json($pets);
     }
